@@ -13,7 +13,7 @@ app.set('view engine', 'ejs')
 mongoose.connect("mongodb://localhost:27017/agendamento", {useNewUrlParser: true, useUnifiedTopology: true})
 
 app.get('/', (req, res) => {
-    res.send("OI!")
+    res.render('index')
 })
 
 app.get("/cadastro", (req, res) => {
@@ -21,7 +21,7 @@ app.get("/cadastro", (req, res) => {
 })
 
 app.post("/create", async (req, res) => {
-    const status = await commitmentsService.create(
+    const status = await commitmentsService.createCommitments(
         req.body.name, 
         req.body.email,
         req.body.description,
@@ -35,5 +35,10 @@ app.post("/create", async (req, res) => {
     }else{
         res.send("Ocorreu uma falha!")
     }
+})
+
+app.get("/calendarFinished", async (req, res) => {
+    let consultas = await commitmentsService.getAllCommitments(false)
+    res.json(consultas)
 })
 app.listen(8080, () => {console.log("SERVIDOR RODANDO!")})
