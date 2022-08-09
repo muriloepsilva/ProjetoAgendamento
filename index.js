@@ -37,8 +37,13 @@ app.post("/create", async (req, res) => {
     }
 })
 
-app.get("/calendarFinished", async (req, res) => {
-    let consultas = await commitmentsService.getAllCommitments(false)
-    res.json(consultas)
+app.get("/getCalendar", async (req, res) => {
+    let commitments = await commitmentsService.getAllCommitments(false)
+    res.json(commitments)
 })
+
+app.get('/event/:id', async (req, res) => {
+    
+})
+
 app.listen(8080, () => {console.log("SERVIDOR RODANDO!")})

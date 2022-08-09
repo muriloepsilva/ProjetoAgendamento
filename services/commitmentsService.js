@@ -1,7 +1,9 @@
 let commitments = require("../models/commitments.js")
 let mongoose = require("mongoose")
+const commitmentsFactory = require("../factories/commitmentsFactory.js")
 
-const coms = mongoose.model("Commitments", commitments)
+
+const Coms = mongoose.model("Commitments", commitments)
 
 class CommitmentsService{
     async createCommitments(name, email, description, cpf, date, time){
@@ -27,7 +29,16 @@ class CommitmentsService{
 
     async getAllCommitments(showFinished){
         if(showFinished) return await coms.find()
-        else return await coms.find({'finished': false})
+        else{
+            let comms = await Coms.find({'finished': false})
+            let commitments = []
+
+            comms.forEach(commitment => {
+                commitments.push(commitmentsFactory.Build(commitment))
+            })
+
+            return commitments
+        }
     }
 }
 
