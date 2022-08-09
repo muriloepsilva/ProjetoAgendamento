@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Evento: <%= comm.description %></h1>
+    <hr />
+    <h4>Nome: <%= comm.name %></h4>
+    <h4>Email: <%= comm.email %></h4>
+    <hr />
+    <% if(!comm.finished){ %>
+    <form action="/finish" method="post">
+      <input type="hidden" name="id" value="<%= comm._id %>" />
+      <button>Finalizar</button>
+    </form>
+    <% } %>
+  </body>
+</html>

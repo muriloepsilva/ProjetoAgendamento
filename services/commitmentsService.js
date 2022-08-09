@@ -40,6 +40,25 @@ class CommitmentsService{
             return commitments
         }
     }
+
+    async getById(id){
+        try{
+            let event = await Coms.findOne({'_id': id})
+            return event
+        }catch(error){
+            console.log(error)
+        }
+    }
+
+    async finishComm(id){
+        try{
+            await Coms.findByIdAndUpdate(id, {finished: true})
+            return true
+        }catch(error){
+            console.log(error)
+            return false
+        }
+    }
 }
 
 module.exports = new CommitmentsService()

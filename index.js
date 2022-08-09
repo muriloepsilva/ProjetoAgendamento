@@ -43,7 +43,15 @@ app.get("/getCalendar", async (req, res) => {
 })
 
 app.get('/event/:id', async (req, res) => {
-    
+    let commitment = await commitmentsService.getById(req.params.id)
+    res.render("event", {comm: commitment})
+})
+
+app.post('/finish', async (req, res) => {
+    let id = req.body.id
+    let result = await commitmentsService.finishComm(id)
+
+    res.redirect("/")
 })
 
 app.listen(8080, () => {console.log("SERVIDOR RODANDO!")})
