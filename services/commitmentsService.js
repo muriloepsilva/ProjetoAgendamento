@@ -6,12 +6,11 @@ const commitmentsFactory = require("../factories/commitmentsFactory.js")
 const Coms = mongoose.model("Commitments", commitments)
 
 class CommitmentsService{
-    async createCommitments(name, email, description, cpf, date, time){
+    async createCommitments(title, email, description, date, time){
         let newComs = new Coms({
-            name,
+            title,
             email,
             description,
-            cpf,
             date,
             time,
             finished: false
@@ -28,7 +27,7 @@ class CommitmentsService{
     }
 
     async getAllCommitments(showFinished){
-        if(showFinished) return await coms.find()
+        if(showFinished) return await Coms.find()
         else{
             let comms = await Coms.find({'finished': false})
             let commitments = []
@@ -58,6 +57,10 @@ class CommitmentsService{
             console.log(error)
             return false
         }
+    }
+
+    async searchComms(){
+        console.log(await Coms.find())
     }
 }
 

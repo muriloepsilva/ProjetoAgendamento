@@ -11,7 +11,7 @@ class CommitmentsFactory{
 
         let comms = {
             id: simpleCommitments._id,
-            title: simpleCommitments.name + " - " + simpleCommitments.description,
+            title: simpleCommitments.title + " - " + simpleCommitments.description,
             start: startDate,
             end: startDate
         }

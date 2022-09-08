@@ -4,13 +4,16 @@ const bodyParser = require("body-parser")
 const mongoose = require("mongoose")
 const commitmentsService = require("./services/commitmentsService.js")
 
+const PORT = process.env.PORT || 5000
+const URL = process.env.DATABASE_URL
+
 app.use(express.static("public"))
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 
 app.set('view engine', 'ejs')
 
-mongoose.connect("mongodb://localhost:27017/agendamento", {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect(URL, {useNewUrlParser: true, useUnifiedTopology: true})
 
 app.get('/', (req, res) => {
     res.render('index')
@@ -22,10 +25,9 @@ app.get("/cadastro", (req, res) => {
 
 app.post("/create", async (req, res) => {
     const status = await commitmentsService.createCommitments(
-        req.body.name, 
+        req.body.title, 
         req.body.email,
         req.body.description,
-        req.body.cpf,
         req.body.date,
         req.body.time
     )
@@ -54,4 +56,10 @@ app.post('/finish', async (req, res) => {
     res.redirect("/")
 })
 
-app.listen(8080, () => {console.log("SERVIDOR RODANDO!")})
+app.get("/list", async (req, res) => {
+    await commitmentsService.searchComms()
+    const comms = await commitmentsService.getAllCommitments(true)
+    res.render("list", {comms})
+})
+
+app.listen(PORT, () => {console.log(`SERVIDOR RODANDO NA PORTA: ${PORT}!`)})
