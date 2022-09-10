@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calendário</title>
+
+    <link rel="stylesheet" href="main.css" />
+    <script src="main.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <a class="btn btn-primary btn-block" href="/cadastro">
+      Criar novo evento
+    </a>
+    <a class="btn btn-primary btn-block" href="/list"> Exibir todos eventos </a>
+    <div id="calendar"></div>
+  </body>
+  <script>
+    const element = document.getElementById("calendar");
+    const calendar = new FullCalendar.Calendar(element, {
+      initialView: "dayGridMonth",
+      locale: "pt-br",
+      events: "getCalendar",
+      eventClick: function (info) {
+        window.location.href = "/event/" + info.event.id;
+      },
+    });
+
+    calendar.render();
+  </script>
+</html>
