@@ -19,6 +19,10 @@ app.get('/', (req, res) => {
     res.render('index')
 })
 
+app.get('/calendar', (req, res) => {
+    res.render('calendar')
+})
+
 app.get("/cadastro", (req, res) => {
     res.render("create")
 })
@@ -33,7 +37,7 @@ app.post("/create", async (req, res) => {
     )
 
     if(status){
-        res.redirect("/")
+        res.redirect("/calendar")
     }else{
         res.send("Ocorreu uma falha!")
     }
@@ -53,7 +57,7 @@ app.post('/finish', async (req, res) => {
     let id = req.body.id
     let result = await commitmentsService.finishComm(id)
 
-    res.redirect("/")
+    res.redirect("/calendar")
 })
 
 app.get("/list", async (req, res) => {

@@ -1,38 +1,45 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Calendário</title>
-
-    <link rel="stylesheet" href="main.css" />
-    <script src="main.js"></script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Agendamento</title>
     <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="main.css" />
   </head>
   <body>
-    <div id="calendar"></div>
-    <a class="btn btn-primary btn-block" href="/cadastro">
-      Criar novo evento
-    </a>
-    <a class="btn btn-primary btn-block" href="/list"> Exibir todos eventos </a>
-  </body>
-  <script>
-    const element = document.getElementById("calendar");
-    const calendar = new FullCalendar.Calendar(element, {
-      initialView: "dayGridMonth",
-      locale: "pt-br",
-      events: "getCalendar",
-      eventClick: function (info) {
-        window.location.href = "/event/" + info.event.id;
-      },
-    });
+    <nav class="navbar navbar-dark bg-primary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img
+            src="../public/images/logo.png"
+            alt="Logo"
+            width="30"
+            class="d-inline-block align-text-top"
+          />
+          Agendamento
+        <a type="button" class="btn btn-primary" href="/calendar"
+        >Acesse o calendário</a
+      >
+      </div>
+    </nav>
+    <div>
+      <p><h3>Agendamento</h3><h2>Uma agenda coletiva para englobar toda sua empresa</h2>Faça reserva de salas para tal dia e tal horário, ou até marque reuniões que queira que todos saibam</p>
+      <img
+        src="../public/images/cimagem.jpg"
+        style="opacity: 0.5; float: right; position: relative"
+      />
+    </div>
 
-    calendar.render();
-  </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
