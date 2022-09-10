@@ -4,7 +4,7 @@ class CommitmentsFactory{
         let month = simpleCommitments.date.getMonth()
         let year = simpleCommitments.date.getFullYear()
 
-        let hour = Number.parseInt(simpleCommitments.time.split(":")[0])
+        let hour = Number.parseInt(simpleCommitments.time.split(":")[0]) + 3
         let minute = Number.parseInt(simpleCommitments.time.split(":")[1])
 
         let startDate = new Date(year, month, day, hour, minute, 0, 0)
