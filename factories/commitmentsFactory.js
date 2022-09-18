@@ -1,6 +1,6 @@
-class CommitmentsFactory{
-    Build(simpleCommitments){
-        let day = simpleCommitments.date.getDate() + 1
+class CommitmentsFactory {
+    Build(simpleCommitments) {
+        let day = simpleCommitments.date.getDate()
         let month = simpleCommitments.date.getMonth()
         let year = simpleCommitments.date.getFullYear()
 
