@@ -60,10 +60,10 @@ app.post('/finish', async (req, res) => {
     res.redirect("/calendar")
 })
 
-app.get("/list", async (req, res) => {
-    await commitmentsService.searchComms()
-    const comms = await commitmentsService.getAllCommitments(true)
-    res.render("list", {comms})
-})
+// app.get("/list", async (req, res) => {
+//     await commitmentsService.searchComms()
+//     const comms = await commitmentsService.getAllCommitments(true)
+//     res.render("list", {comms})
+// })
 
 app.listen(PORT, () => {console.log(`SERVIDOR RODANDO NA PORTA: ${PORT}!`)})
