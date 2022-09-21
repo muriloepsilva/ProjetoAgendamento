@@ -38,13 +38,15 @@ app.post("/create", async (req, res) => {
             req.body.date,
             req.body.time
         )
+        
+        if(status){
+            res.redirect("/calendar")
+        }else{
+            res.send("Ocorreu uma falha!")
+    }
     }
 
-    if(status){
-        res.redirect("/calendar")
-    }else{
-        res.send("Ocorreu uma falha!")
-    }
+    
 })
 
 app.get("/getCalendar", async (req, res) => {
