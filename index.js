@@ -28,6 +28,7 @@ app.get("/cadastro", (req, res) => {
 })
 
 app.post("/create", async (req, res) => {
+    if(!req.body.title || req.body.email || req.body.description || req.body.date || req.body.time) res.send("Preencha todos os campos")
     const status = await commitmentsService.createCommitments(
         req.body.title, 
         req.body.email,
