@@ -8,7 +8,7 @@ const Coms = mongoose.model("Commitments", commitments)
 class CommitmentsService{
     async createCommitments(title, email, description, date, time){
 
-        if(!title || !email || !description || !date || !time) alert("Preencha todos os campos!")
+        if(!title || !email || !description || !date || !time) throw new Error("Preencha todos os campos!")
         let newComs = new Coms({
             title,
             email,
